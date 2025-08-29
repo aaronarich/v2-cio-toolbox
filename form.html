@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer.io Test Site - Form Capture</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Configuration</a></li>
+            <li><a href="in-app.html">In-App Messaging</a></li>
+            <li><a href="form.html" class="active">Form Capture</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Form Capture Test</h1>
+        <p class="subtitle">Test Customer.io form capture and tracking features</p>
+
+        <div class="config-section">
+            <h2>Settings</h2>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="autoCapture" checked />
+                    Enable automatic form capture
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="captureAllFields" checked />
+                    Capture all form fields (not just email)
+                </label>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Sample Forms</h2>
+            
+            <!-- Newsletter Signup Form -->
+            <div class="test-form-container">
+                <h3>Newsletter Signup</h3>
+                <form id="newsletterForm" class="test-form" data-cio-form="newsletter">
+                    <div class="form-group">
+                        <label for="newsletter_email">Email Address</label>
+                        <input type="email" id="newsletter_email" name="email" required placeholder="your@email.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="newsletter_name">Name (Optional)</label>
+                        <input type="text" id="newsletter_name" name="name" placeholder="John Doe" />
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="marketing_consent" value="true" />
+                            I agree to receive marketing emails
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="test-form-container">
+                <h3>Contact Form</h3>
+                <form id="contactForm" class="test-form" data-cio-form="contact">
+                    <div class="form-group">
+                        <label for="contact_name">Full Name</label>
+                        <input type="text" id="contact_name" name="full_name" required placeholder="Jane Smith" />
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_email">Email</label>
+                        <input type="email" id="contact_email" name="email" required placeholder="jane@company.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_phone">Phone</label>
+                        <input type="tel" id="contact_phone" name="phone" placeholder="+1 (555) 123-4567" />
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_subject">Subject</label>
+                        <select id="contact_subject" name="subject">
+                            <option value="">Select a topic</option>
+                            <option value="sales">Sales Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="billing">Billing Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact_message">Message</label>
+                        <textarea id="contact_message" name="message" rows="4" placeholder="Your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Account Registration Form -->
+            <div class="test-form-container">
+                <h3>Account Registration</h3>
+                <form id="registrationForm" class="test-form" data-cio-form="registration">
+                    <div class="form-group">
+                        <label for="reg_email">Email</label>
+                        <input type="email" id="reg_email" name="email" required placeholder="user@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_username">Username</label>
+                        <input type="text" id="reg_username" name="username" required placeholder="username123" />
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_password">Password</label>
+                        <input type="password" id="reg_password" name="password" required placeholder="••••••••" />
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_company">Company</label>
+                        <input type="text" id="reg_company" name="company" placeholder="Acme Corp" />
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_role">Role</label>
+                        <select id="reg_role" name="role">
+                            <option value="">Select your role</option>
+                            <option value="developer">Developer</option>
+                            <option value="designer">Designer</option>
+                            <option value="manager">Manager</option>
+                            <option value="executive">Executive</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="terms_accepted" value="true" required />
+                            I accept the terms and conditions
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+            </div>
+
+            <!-- Custom Event Form -->
+            <div class="test-form-container">
+                <h3>Custom Form with Event Tracking</h3>
+                <form id="customForm" class="test-form" data-cio-form="custom">
+                    <div class="form-group">
+                        <label for="custom_field1">Custom Field 1</label>
+                        <input type="text" id="custom_field1" name="custom_field_1" placeholder="Enter value" />
+                    </div>
+                    <div class="form-group">
+                        <label for="custom_field2">Custom Field 2</label>
+                        <input type="text" id="custom_field2" name="custom_field_2" placeholder="Enter value" />
+                    </div>
+                    <div class="form-group">
+                        <label>Options</label>
+                        <label class="radio-label">
+                            <input type="radio" name="option" value="option1" /> Option 1
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="option" value="option2" /> Option 2
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="option" value="option3" /> Option 3
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Custom Form</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Form Interaction Events</h2>
+            <p>Monitor form interactions in real-time:</p>
+            <div class="button-group">
+                <button id="trackFormView" class="btn">Track Form View</button>
+                <button id="trackFormStart" class="btn">Track Form Start</button>
+                <button id="trackFormAbandon" class="btn">Simulate Form Abandonment</button>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Form Events Log</h2>
+            <div id="formEventLog" class="debug-console">
+                <div class="console-header">
+                    <span>Form Events</span>
+                    <button id="clearFormLog" class="btn btn-small">Clear</button>
+                </div>
+                <div id="formLogOutput" class="console-output"></div>
+            </div>
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/customerio.js"></script>
+    <script src="js/form-page.js"></script>
+</body>
+</html>

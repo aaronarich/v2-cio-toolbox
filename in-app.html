@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer.io Test Site - In-App Messaging</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Configuration</a></li>
+            <li><a href="in-app.html" class="active">In-App Messaging</a></li>
+            <li><a href="form.html">Form Capture</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>In-App Messaging Test</h1>
+        <p class="subtitle">Test Customer.io in-app messaging features</p>
+
+        <div class="config-section">
+            <h2>Message Display Area</h2>
+            <div id="messageDisplay" class="message-display-area">
+                <p class="info-text">In-app messages will appear here when triggered. Make sure you have:</p>
+                <ul>
+                    <li>Configured your Site ID in the Configuration page</li>
+                    <li>Set up in-app campaigns in Customer.io</li>
+                    <li>Met the trigger conditions for your campaigns</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>User Context</h2>
+            <div class="status-display">
+                <p><strong>Current User ID:</strong> <span id="currentUserId">Not identified</span></p>
+                <p><strong>Anonymous ID:</strong> <span id="anonymousId">Not set</span></p>
+                <p><strong>SDK Status:</strong> <span id="sdkStatus">Not initialized</span></p>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Message Triggers</h2>
+            <p>Use these actions to trigger different types of in-app messages:</p>
+            
+            <div class="button-group">
+                <button id="identifyForMessage" class="btn btn-primary">Identify User (if not identified)</button>
+                <button id="triggerPageView" class="btn">Trigger Page View Event</button>
+                <button id="triggerCustomEvent" class="btn">Trigger Custom Event</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="customEventName">Custom Event Name</label>
+                <input type="text" id="customEventName" placeholder="e.g., viewed_pricing" value="in_app_test" />
+            </div>
+
+            <div class="form-group">
+                <label for="customEventData">Custom Event Data (JSON)</label>
+                <textarea id="customEventData" rows="3" placeholder='{"source": "in-app-page"}'>{
+  "source": "in-app-test-page",
+  "test": true
+}</textarea>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Anonymous Messaging</h2>
+            <p>Test in-app messages for anonymous users:</p>
+            <div class="button-group">
+                <button id="setAnonymous" class="btn">Set as Anonymous User</button>
+                <button id="triggerAnonymousEvent" class="btn">Trigger Anonymous Event</button>
+                <button id="convertAnonymous" class="btn">Convert Anonymous to Identified</button>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Message Types Testing</h2>
+            <p>Common in-app message scenarios to test:</p>
+            <div class="test-scenarios">
+                <div class="scenario-card">
+                    <h3>Welcome Message</h3>
+                    <p>Trigger: First visit or user identification</p>
+                    <button class="btn btn-small" onclick="testWelcomeMessage()">Test Welcome</button>
+                </div>
+                <div class="scenario-card">
+                    <h3>Feature Announcement</h3>
+                    <p>Trigger: Specific page view or event</p>
+                    <button class="btn btn-small" onclick="testFeatureAnnouncement()">Test Announcement</button>
+                </div>
+                <div class="scenario-card">
+                    <h3>Survey/Feedback</h3>
+                    <p>Trigger: Time on page or exit intent</p>
+                    <button class="btn btn-small" onclick="testSurvey()">Test Survey</button>
+                </div>
+                <div class="scenario-card">
+                    <h3>Promotional</h3>
+                    <p>Trigger: User segment or attribute</p>
+                    <button class="btn btn-small" onclick="testPromo()">Test Promo</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Debug Console</h2>
+            <div id="debugConsole" class="debug-console">
+                <div class="console-header">
+                    <span>Event Log</span>
+                    <button id="clearConsole" class="btn btn-small">Clear</button>
+                </div>
+                <div id="consoleOutput" class="console-output"></div>
+            </div>
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <!-- Customer.io SDK will be loaded here -->
+    <div id="cio-sdk-container"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/customerio.js"></script>
+    <script src="js/in-app-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer.io Test Site - Configuration</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Configuration</a></li>
+            <li><a href="in-app.html">In-App Messaging</a></li>
+            <li><a href="form.html">Form Capture</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Customer.io Test Configuration</h1>
+        <p class="subtitle">Configure your Customer.io integration settings for testing</p>
+
+        <div class="config-section">
+            <h2>Actions</h2>
+            <div class="button-group">
+                <button id="saveConfig" class="btn btn-primary">Save Configuration</button>
+                <button id="clearConfig" class="btn btn-secondary">Clear All Settings</button>
+                <button id="testConnection" class="btn btn-success">Test Connection</button>
+            </div>
+            <div class="button-group" style="margin-top: 10px;">
+                <button id="identifyUser" class="btn">Identify User</button>
+                <button id="trackEvent" class="btn">Track Event</button>
+                <button id="trackPageView" class="btn">Track Page View</button>
+                <button id="resetUser" class="btn">Reset/Logout User</button>
+            </div>
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <div class="config-section">
+            <h2>SDK Configuration</h2>
+            <div class="form-group">
+                <label for="writeKey">Write Key (from Data Pipelines Source)</label>
+                <input type="text" id="writeKey" placeholder="Enter your write key" />
+                <small>Found in Data & Integrations > Sources > Your JavaScript Source. This is for the new JS SDK (formerly Pipelines SDK)</small>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="enableAnonymousInApp" />
+                    Enable anonymous in-app messaging
+                </label>
+                <small>Allow in-app messages to be shown to anonymous users</small>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>User Identification</h2>
+            <div class="form-group">
+                <label for="userId">User ID</label>
+                <input type="text" id="userId" placeholder="e.g., user_123" value="test_user_001" />
+            </div>
+            <div class="form-group">
+                <label for="userEmail">Email</label>
+                <input type="email" id="userEmail" placeholder="test@example.com" value="test@example.com" />
+            </div>
+            <div class="form-group">
+                <label for="userAttributes">Additional Attributes (JSON)</label>
+                <textarea id="userAttributes" rows="4" placeholder='{"plan": "premium", "created_at": 1234567890}'>{
+  "first_name": "Test",
+  "last_name": "User",
+  "plan": "premium",
+  "created_at": 1234567890
+}</textarea>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Event Configuration</h2>
+            <div class="form-group">
+                <label for="eventName">Default Event Name</label>
+                <input type="text" id="eventName" placeholder="e.g., button_clicked" value="page_viewed" />
+            </div>
+            <div class="form-group">
+                <label for="eventProperties">Event Properties (JSON)</label>
+                <textarea id="eventProperties" rows="4" placeholder='{"page": "home", "category": "test"}'>{
+  "page": "test_page",
+  "category": "testing",
+  "timestamp": "auto"
+}</textarea>
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Anonymous Tracking</h2>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="enableAnonymous" checked />
+                    Enable anonymous tracking before identification
+                </label>
+            </div>
+            <div class="form-group">
+                <label for="anonymousId">Anonymous ID (auto-generated if empty)</label>
+                <input type="text" id="anonymousId" placeholder="Leave empty for auto-generation" />
+            </div>
+        </div>
+
+        <div class="config-section">
+            <h2>Current Status</h2>
+            <div id="currentStatus" class="status-display">
+                <p><strong>SDK Status:</strong> <span id="sdkStatus">Not initialized</span></p>
+                <p><strong>Current User:</strong> <span id="currentUser">None</span></p>
+                <p><strong>Events Tracked:</strong> <span id="eventCount">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/customerio.js"></script>
+    <script src="js/configuration-page.js"></script>
+</body>
+</html>
