@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     
     // Listen for Customer.io events
-    window.addEventListener('cio-event', updateStatus);
+    window.addEventListener('cio-event', handleCIOEvent);
 });
 
 function loadConfiguration() {
@@ -47,6 +47,9 @@ function setupEventListeners() {
     document.getElementById('trackEvent').addEventListener('click', trackEvent);
     document.getElementById('trackPageView').addEventListener('click', trackPageView);
     document.getElementById('resetUser').addEventListener('click', resetUser);
+    
+    // Debug console
+    document.getElementById('clearConsole').addEventListener('click', clearConsole);
 }
 
 function saveConfiguration() {
@@ -226,4 +229,42 @@ function showMessage(message, type) {
         messageDiv.className = 'status-message';
         messageDiv.textContent = '';
     }, 5000);
+}
+
+function handleCIOEvent(event) {
+    const detail = event.detail;
+    logToConsole(detail.type, detail.data);
+    updateStatus();
+}
+
+function logToConsole(type, data) {
+    const consoleOutput = document.getElementById('consoleOutput');
+    if (!consoleOutput) return;
+    
+    const logEntry = document.createElement('div');
+    logEntry.className = 'log-entry';
+    
+    const time = new Date().toLocaleTimeString();
+    const message = typeof data === 'object' ? JSON.stringify(data, null, 2) : data;
+    
+    logEntry.innerHTML = `
+        <span class="log-time">${time}</span>
+        <span class="log-type">${type}</span>
+        <span class="log-message">${message}</span>
+    `;
+    
+    consoleOutput.insertBefore(logEntry, consoleOutput.firstChild);
+    
+    // Keep only last 50 entries
+    while (consoleOutput.children.length > 50) {
+        consoleOutput.removeChild(consoleOutput.lastChild);
+    }
+}
+
+function clearConsole() {
+    const consoleOutput = document.getElementById('consoleOutput');
+    if (consoleOutput) {
+        consoleOutput.innerHTML = '';
+    }
+    logToConsole('CONSOLE', 'Console cleared');
 }
