@@ -60,6 +60,19 @@ nav a.active {
     padding: 2rem;
 }
 
+.container-with-sidebar {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container-with-sidebar .container {
+    flex: 1;
+    max-width: 1000px;
+    margin-right: 250px;
+}
+
 /* Typography */
 h1 {
     font-size: 2.5rem;
@@ -197,6 +210,12 @@ h3 {
 .btn-small {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
 }
 
 .button-group {
@@ -388,6 +407,76 @@ h3 {
 
 .console-output::-webkit-scrollbar-thumb:hover {
     background: #777;
+}
+
+/* Floating Actions */
+.floating-actions {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 1.5rem;
+    z-index: 50;
+}
+
+.floating-actions h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e1e4e8;
+}
+
+.floating-actions-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-actions .btn {
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1280px) {
+    .container-with-sidebar .container {
+        margin-right: 240px;
+    }
+    
+    .floating-actions {
+        width: 200px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container-with-sidebar {
+        flex-direction: column;
+    }
+    
+    .container-with-sidebar .container {
+        margin-right: 0;
+        max-width: 100%;
+    }
+    
+    .floating-actions {
+        position: static;
+        width: 100%;
+        margin: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .floating-actions-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .floating-actions .btn {
+        flex: 1;
+        min-width: 150px;
+    }
 }
 
 /* Loading Indicator */

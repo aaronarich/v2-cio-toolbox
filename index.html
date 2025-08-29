@@ -15,32 +15,23 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <h1>Customer.io Test Configuration</h1>
-        <p class="subtitle">Configure your Customer.io integration settings for testing</p>
+    <div class="container-with-sidebar">
+        <div class="container">
+            <h1>Customer.io Test Configuration</h1>
+            <p class="subtitle">Configure your Customer.io integration settings for testing</p>
 
-        <div class="config-section">
-            <h2>Debug Console</h2>
-            <div id="debugConsole" class="debug-console">
-                <div class="console-header">
-                    <span>Event Log</span>
-                    <button id="clearConsole" class="btn btn-small">Clear</button>
+            <div class="config-section">
+                <h2>Debug Console</h2>
+                <div id="debugConsole" class="debug-console">
+                    <div class="console-header">
+                        <span>Event Log</span>
+                        <button id="clearConsole" class="btn btn-small">Clear</button>
+                    </div>
+                    <div id="consoleOutput" class="console-output"></div>
                 </div>
-                <div id="consoleOutput" class="console-output"></div>
             </div>
-        </div>
 
-        <div class="config-section">
-            <h2>Quick Actions</h2>
-            <div class="button-group">
-                <button id="identifyUser" class="btn">Identify User</button>
-                <button id="trackEvent" class="btn">Track Event</button>
-                <button id="trackPageView" class="btn">Track Page View</button>
-                <button id="resetUser" class="btn">Reset/Logout User</button>
-            </div>
-        </div>
-
-        <div id="statusMessage" class="status-message"></div>
+            <div id="statusMessage" class="status-message"></div>
 
         <div class="config-section">
             <h2>SDK Configuration</h2>
@@ -114,12 +105,23 @@
             </div>
         </div>
 
-        <div class="config-section">
-            <h2>Current Status</h2>
-            <div id="currentStatus" class="status-display">
-                <p><strong>SDK Status:</strong> <span id="sdkStatus">Not initialized</span></p>
-                <p><strong>Current User:</strong> <span id="currentUser">None</span></p>
-                <p><strong>Events Tracked:</strong> <span id="eventCount">0</span></p>
+            <div class="config-section">
+                <h2>Current Status</h2>
+                <div id="currentStatus" class="status-display">
+                    <p><strong>SDK Status:</strong> <span id="sdkStatus">Not initialized</span></p>
+                    <p><strong>Current User:</strong> <span id="currentUser">None</span></p>
+                    <p><strong>Events Tracked:</strong> <span id="eventCount">0</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-actions">
+            <h3>Quick Actions</h3>
+            <div class="floating-actions-buttons">
+                <button id="identifyUser" class="btn btn-block">Identify User</button>
+                <button id="trackEvent" class="btn btn-block">Track Event</button>
+                <button id="trackPageView" class="btn btn-block">Track Page View</button>
+                <button id="resetUser" class="btn btn-block">Reset/Logout User</button>
             </div>
         </div>
     </div>
