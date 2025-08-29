@@ -153,6 +153,14 @@ function identifyUser() {
     }
     
     const userData = Config.getUserData();
+    
+    // Validate User ID is provided
+    if (!userData.id || userData.id.trim() === '') {
+        showMessage('User ID is required for identification', 'error');
+        document.getElementById('userId').focus();
+        return;
+    }
+    
     if (CustomerIO.identify(userData)) {
         showMessage(`User identified: ${userData.id || userData.email}`, 'success');
         updateStatus();

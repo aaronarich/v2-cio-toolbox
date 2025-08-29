@@ -5,8 +5,8 @@ const Config = (function() {
     // Default configuration
     const defaultConfig = {
         writeKey: '',
-        userId: 'test_user_001',
-        userEmail: 'test@example.com',
+        userId: '',
+        userEmail: '',
         userAttributes: {
             first_name: 'Test',
             last_name: 'User',
